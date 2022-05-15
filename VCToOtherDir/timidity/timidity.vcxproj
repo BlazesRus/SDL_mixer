@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>timidity</ProjectName>
+    <ProjectGuid>{B162B6F1-E876-4D5F-A1F6-E3A6DC2F4A2C}</ProjectGuid>
+    <RootNamespace>timidity</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <PlatformToolset>v142</PlatformToolset>
+    <!-- 142 for VS2019(Default);143 for VS2022-->
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '16' Or '$(VisualStudioVersion)' == ''">v142</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '17'">v143</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="GlobalsPart2">
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <ParentOfRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)..\..\..\..\'))</ParentOfRoot>
+    <RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)..\..\..\'))</RootDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SDLDir>$([System.IO.Path]::GetFullPath('$(ParentOfRoot)SDL\include\'))</SDLDir>
+	<SDLOutputDir>$([System.IO.Path]::GetFullPath('$(ParentOfRoot)SDL2Output\'))</SDLOutputDir>
+    <SDLLibrary>$([System.IO.Path]::GetFullPath('$(SDLOutputDir)$(Platform)\$(Configuration)\SDL2.lib'))</SDLLibrary>
+  </PropertyGroup>
+  <PropertyGroup Label="AlternativeIncludePaths">
+    <IncludePath>$(SDLDir);%(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Label="OutputInfo">
+    <OutDir>$(SDLOutputDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SDLOutputDir)ObjectFiles\$(ProjectName)\$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <Midl>
+      <TargetEnvironment Condition="'$(Platform)'=='x64'">X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Bscmake />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <Midl>
+      <TargetEnvironment Condition="'$(Platform)'=='x64'">X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <LinkStatus>true</LinkStatus>
+      <LargeAddressAware Condition="'$(Platform)'=='x64'">true</LargeAddressAware>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
+      <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SDLLibrary);%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <Bscmake />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+        <ClCompile Include="..\..\src\codecs\timidity\common.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\instrum.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\mix.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\output.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\playmidi.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\readmidi.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\resample.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\tables.c" />
+        <ClCompile Include="..\..\src\codecs\timidity\timidity.c" />
+  </ItemGroup>
+  <ItemGroup>
+        <ClInclude Include="..\..\src\codecs\timidity\common.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\instrum.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\mix.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\options.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\output.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\playmidi.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\readmidi.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\resample.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\tables.h" />
+        <ClInclude Include="..\..\src\codecs\timidity\timidity.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
