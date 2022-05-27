@@ -38,7 +38,6 @@
 #include "music_opus.h"
 #include "music_drmp3.h"
 #include "music_mpg123.h"
-#include "music_mad.h"
 #include "music_drflac.h"
 #include "music_flac.h"
 #include "native_midi/native_midi.h"
@@ -93,7 +92,8 @@ void meta_tags_init(Mix_MusicMetaTags *tags)
 
 void meta_tags_clear(Mix_MusicMetaTags *tags)
 {
-    size_t i = 0;
+    size_t i;
+
     for (i = 0; i < MIX_META_LAST; i++) {
         if (tags->tags[i]) {
             SDL_free(tags->tags[i]);
@@ -182,9 +182,6 @@ static Mix_MusicInterface *s_music_interfaces[] =
 #endif
 #ifdef MUSIC_MP3_MPG123
     &Mix_MusicInterface_MPG123,
-#endif
-#ifdef MUSIC_MP3_MAD
-    &Mix_MusicInterface_MAD,
 #endif
 #ifdef MUSIC_MOD_XMP
     &Mix_MusicInterface_XMP,
