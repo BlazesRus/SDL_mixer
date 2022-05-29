@@ -34,12 +34,6 @@
     <ClInclude Include="..\src\codecs\music_fluidsynth.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\codecs\music_mad.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\codecs\music_mikmod.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\codecs\music_modplug.h">
       <Filter>Sources</Filter>
     </ClInclude>
@@ -59,6 +53,15 @@
       <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="..\src\codecs\music_wav.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\codecs\music_drflac.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\codecs\music_drmp3.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\codecs\music_xmp.h">
       <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>
@@ -206,12 +209,6 @@
     <ClCompile Include="..\src\codecs\music_fluidsynth.c">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\codecs\music_mad.c">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\codecs\music_mikmod.c">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\codecs\music_modplug.c">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -231,6 +228,18 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\codecs\music_wav.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\codecs\music_drflac.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\codecs\music_drmp3.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\codecs\music_ogg_stb.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\codecs\music_xmp.c">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

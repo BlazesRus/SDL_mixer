@@ -95,7 +95,7 @@
   </PropertyGroup>
   <PropertyGroup Label="OutputInfo">
     <OutDir>$(SDLOutputDir)$(Platform)\</OutDir>
-    <IntDir>$(SDLOutputDir)ObjectFiles\$(ProjectName)\$(Configuration)_$(Platform)\</IntDir>
+    <IntDir>.\ObjectFiles\$(ProjectName)\$(Configuration)_$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
@@ -145,27 +145,27 @@
     <Bscmake />
   </ItemDefinitionGroup>
   <ItemGroup>
-        <ClCompile Include="..\..\src\codecs\timidity\common.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\instrum.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\mix.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\output.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\playmidi.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\readmidi.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\resample.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\tables.c" />
-        <ClCompile Include="..\..\src\codecs\timidity\timidity.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\common.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\instrum.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\mix.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\output.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\playmidi.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\readmidi.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\resample.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\tables.c" />
+    <ClCompile Include="..\..\src\codecs\timidity\timidity.c" />
   </ItemGroup>
   <ItemGroup>
-        <ClInclude Include="..\..\src\codecs\timidity\common.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\instrum.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\mix.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\options.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\output.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\playmidi.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\readmidi.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\resample.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\tables.h" />
-        <ClInclude Include="..\..\src\codecs\timidity\timidity.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\common.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\instrum.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\mix.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\options.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\output.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\playmidi.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\readmidi.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\resample.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\tables.h" />
+    <ClInclude Include="..\..\src\codecs\timidity\timidity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
