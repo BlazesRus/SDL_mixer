@@ -167,12 +167,12 @@
       <Outputs>$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
     </PostBuildEvent>
     <PostBuildEvent Condition="'$(Platform)'=='Win32'">
-      <Command>xcopy external\lib\x86\*.dll $(SDLOutputDir) /DESY</Command>
+      <Command>xcopy external\lib\x86\*.dll $(SDLLibDir) /DESY</Command>
       <Message>Copying %(Filename)%(Extension)</Message>
       <Outputs>$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
     </PostBuildEvent>
     <PostBuildEvent Condition="'$(Platform)'=='x64'">
-      <Command>xcopy external\lib\x64\*.dll $(SDLOutputDir) /DESY</Command>
+      <Command>xcopy external\lib\x64\*.dll $(SDLLibDir) /DESY</Command>
       <Message>Copying %(Filename)%(Extension)</Message>
       <Outputs>$(SolutionDir)\$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
     </PostBuildEvent>
