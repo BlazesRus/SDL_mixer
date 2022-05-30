@@ -31,10 +31,12 @@
     <ProjectGuid>{F7E944B3-0815-40CD-B3E4-90B2A15B0E33}</ProjectGuid>
     <RootNamespace>SDL_mixer</RootNamespace>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
+	<TargetName>SDL2_mixerBlazesRus</TargetName><!--Alternative name to make more obviously changed potential source code from fork-->
   </PropertyGroup>
   <PropertyGroup Label="UserMacros">
     <RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)..\..\'))</RootDirectory>
     <ParentOfRoot>$([System.IO.Path]::GetFullPath('$(RootDirectory)\..\'))</ParentOfRoot>
+	<stbVectorDir>$([System.IO.Path]::GetFullPath('$(RootDirectory)\stb\'))</stbVectorDir>
   </PropertyGroup>
   <Choose>
     <When Condition="'$(Configuration)' == 'Debug'">
@@ -56,10 +58,10 @@
     <SDLLibDir Condition="'$(Configuration)' == 'ReleaseC99'">$([System.IO.Path]::GetFullPath('$(SDLOutputDir)Clang$(Platform)\'))</SDLLibDir>
     <SDLLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2.lib'))</SDLLibrary>
 <!--
-    <SDLImageLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_image.lib'))</SDLImageLibrary>
-    <SDLMixerLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_mixer.lib'))</SDLMixerLibrary>
-    <SDLTTFLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_ttf.lib'))</SDLTTFLibrary>
-    <FreeTypeLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)freetype.lib'))</FreeTypeLibrary>
+    <SDLImageLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_imageBlazesRus.lib'))</SDLImageLibrary>
+    <SDLMixerLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_mixerBlazesRus.lib'))</SDLMixerLibrary>
+    <SDLTTFLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL2_ttfBlazesRus.lib'))</SDLTTFLibrary>
+    <FreeTypeLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)FreetypeBlazesRus.lib'))</FreeTypeLibrary>
     <SDLNetLibrary>$([System.IO.Path]::GetFullPath('$(SDLLibDir)SDL_net.lib'))</SDLNetLibrary>
 -->
   </PropertyGroup>
@@ -106,7 +108,8 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
-      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Platform)'=='Win32' Or '$(Configuration)' == 'ReleaseC99'">StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+	  <EnableEnhancedInstructionSet Condition="'$(Platform)'=='x64' And '$(Configuration)' != 'ReleaseC99'">AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -140,7 +143,11 @@
       <PreprocessorDefinitions>DLL_EXPORT;NDEBUG;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;MUSIC_WAV;MUSIC_FLAC_DRFLAC;MUSIC_MOD_MODPLUG;MODPLUG_DYNAMIC="libmodplug-1.dll";MUSIC_MP3_DRMP3;MUSIC_OGG;OGG_USE_STB;MUSIC_OPUS;OPUS_DYNAMIC="libopusfile-0.dll";MUSIC_MID_TIMIDITY;MUSIC_MID_NATIVE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Platform)'=='Win32' Or '$(Configuration)' == 'ReleaseC99'">StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+	  <EnableEnhancedInstructionSet Condition="'$(Platform)'=='x64' And '$(Configuration)' != 'ReleaseC99'">AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+	  <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+	  <StringPooling>false</StringPooling>
+	  <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
