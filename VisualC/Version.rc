@@ -51,7 +51,7 @@ BEGIN
             VALUE "LegalCopyright", "Copyright © 2022 Sam Lantinga\0"
             VALUE "OriginalFilename", "SDL_mixer.dll\0"
             VALUE "ProductName", "Simple DirectMedia Layer\0"
-            VALUE "ProductVersion", "2, 5, 1, f\0"
+            VALUE "ProductVersion", "2, 5, 1, f-BlazesRus\0"
         END
     END
     BLOCK "VarFileInfo"
